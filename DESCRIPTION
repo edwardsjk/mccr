@@ -1,0 +1,8 @@
+Package: mccr
+Title: Accounting for Misclassification of Competing Events
+Version: 0.1
+Authors@R: person("Jessie", "Edwards", email = "jessedwards@unc.edu", role = c("aut", "cre"))
+Description: Accounts for misclassification of competing event types when estimating nonparametric cumulative incidence functions
+Depends: R (>= 3.1.3)
+License: GPL-3
+LazyData: true
