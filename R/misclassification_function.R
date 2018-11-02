@@ -37,7 +37,7 @@ misclassificationnd<-function(data, c, c_obs){
 
 #' A helper function to account for differential misclassification
 #'
-#' @param x thing to lab
+#' @param x thing to lag
 #' @param k how much to lag it
 #' @return vector
 #' @export

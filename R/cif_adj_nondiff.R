@@ -1,7 +1,7 @@
 #' A function to account for nondifferential misclassification in cumulative incidence functions
 #'
 #' @param data input data source containing main study data, specifically time variable x and possibly misclassified outcome c_obs
-#' @param data_evd intput data source containing validation data
+#' @param data_evd intput data source containing validation data with variables true outcome c and misclassified outcome c_obs
 #' @param tau maximum follow-up time
 #' @return data frame with event times and corrected cumulative incidence function for outcome of interest
 #' @export

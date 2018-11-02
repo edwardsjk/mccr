@@ -9,7 +9,7 @@ cif_adj(data, data_evd, tau, diff = 1)
 \arguments{
 \item{data}{input data source containing main study data, specifically time variable x and possibly misclassified outcome c_obs}
 
-\item{data_evd}{intput data source containing validation data}
+\item{data_evd}{intput data source containing validation data with variables true outcome c and misclassified outcome c_obs as well as any variable by which misclassification may be differential. This variable should be named diffx.}
 
 \item{tau}{maximum follow-up time}
 

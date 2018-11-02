@@ -7,7 +7,7 @@
 lagpad(x, k)
 }
 \arguments{
-\item{x}{thing to lab}
+\item{x}{thing to lag}
 
 \item{k}{how much to lag it}
 }

@@ -9,7 +9,7 @@ cif_adj_nondiff(data, data_evd, tau)
 \arguments{
 \item{data}{input data source containing main study data, specifically time variable x and possibly misclassified outcome c_obs}
 
-\item{data_evd}{intput data source containing validation data}
+\item{data_evd}{intput data source containing validation data with variables true outcome c and misclassified outcome c_obs}
 
 \item{tau}{maximum follow-up time}
 }
