@@ -20,4 +20,3 @@ A helper function to account for differential misclassification
 \examples{
 lagpad(dsx$times,1)
 }
-

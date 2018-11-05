@@ -4,12 +4,21 @@
 \alias{cif_adj_nondiff}
 \title{A function to account for nondifferential misclassification in cumulative incidence functions}
 \usage{
-cif_adj_nondiff(data, data_evd, tau)
+cif_adj_nondiff(data = data, data_evd = data_evd, t = "x",
+  obs = "c_obs", true = "c", level = 1, tau = 1)
 }
 \arguments{
-\item{data}{input data source containing main study data, specifically time variable x and possibly misclassified outcome c_obs}
+\item{data}{input data source containing main study data}
 
-\item{data_evd}{intput data source containing validation data with variables true outcome c and misclassified outcome c_obs}
+\item{data_evd}{intput data source containing validation data with variables true outcome and misclassified outcome}
+
+\item{t}{name of the time variable}
+
+\item{obs}{name of variable denoting possibly misclassified outcome type in both main and validation datasets}
+
+\item{true}{name of variable denoting true outcome type (in validation data only)}
+
+\item{level}{level of outcome for which to estimate cumulative incidence}
 
 \item{tau}{maximum follow-up time}
 }
@@ -20,6 +29,5 @@ data frame with event times and corrected cumulative incidence function for outc
 A function to account for nondifferential misclassification in cumulative incidence functions
 }
 \examples{
-cif_adj_nondiff(mydata, valdata, 2)
+cif_adj_nondiff(data = mydata, data_evd = valdata, t = "x", obs = "c_obs", true = "c", level = 1, tau = 2)
 }
-

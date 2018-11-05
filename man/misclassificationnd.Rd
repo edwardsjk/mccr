@@ -22,4 +22,3 @@ A function to estimate misclassification parameters overall
 \examples{
 misclassificationnd(data, y, y_obs)
 }
-

@@ -4,12 +4,16 @@
 \alias{cif_naive}
 \title{A function to estimate a nonparametric cumulative incidence function}
 \usage{
-cif_naive(data, c, tau)
+cif_naive(data = data, t = "x", type = "c_obs", level = 1, tau = 1)
 }
 \arguments{
-\item{data}{input data source containing main study data, specifically time variable x and outcome type c}
+\item{data}{input data source containing main study data}
 
-\item{c}{level of outcome for which to estimate cumulative incidence}
+\item{t}{name of the time variable}
+
+\item{type}{name of variable denoting outcome type}
+
+\item{level}{level of outcome for which to estimate cumulative incidence}
 
 \item{tau}{final follow-up time}
 }
@@ -20,6 +24,5 @@ data frame with event times and cumulative incidence function for outcome of int
 A function to estimate a nonparametric cumulative incidence function
 }
 \examples{
-cif_naive(mydata, 1, 2)
+cif_naive(mydata, t = "x", type = "c_obs", level = 1, tau = 2)
 }
-

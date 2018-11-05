@@ -1,36 +1,47 @@
 #' A function to account for differential misclassification in cumulative incidence functions
 #'
-#' @param data input data source containing main study data, specifically time variable x and possibly misclassified outcome c_obs
-#' @param data_evd intput data source containing validation data with variables true outcome c and misclassified outcome c_obs as well as any variable by which misclassification may be differential. This variable should be named diffx.
+#' @param data input data source containing main study data
+#' @param data_evd intput data source containing validation data with variables true outcome and misclassified outcome as well as any variable by which misclassification may be differential. 
+#' @param t name of the time variable in main study data
+#' @param obs name of variable denoting possibly misclassified outcome type in both main and validation datasets
+#' @param true name of variable denoting true outcome type (in validation data only)
+#' @param level level of outcome for which to estimate cumulative incidence
 #' @param tau maximum follow-up time
-#' @param diff indicator of whether misclassification is differential (diff=1) or nondifferential (diff=0)
+#' @param diff_by name of variable in main study and validation dataset by which misclassification is differential
 #' @return data frame with event times and corrected cumulative incidence function for outcome of interest
 #' @keyword misclassification
 
 #' @export
 #' @examples
-#' cif_adj(mydata, valdata, 2, diff=1)
+#' cif_adj(data = mydata, data_evd = valdata, t = "x", obs = "c_obs", true = "c", level = 1, tau = 2, diff_by = "diffx")
 
 
 
-cif_adj<-function(data,data_evd,tau, diff=1){
+cif_adj<-function(data = data, data_evd = data_evd,  t = "x", 
+                  obs = "c_obs", true = "c", level = 1, tau = 1, diff_by = NA){
   set.seed(123)
+  data_evd <- data_evd
+  data$x <- data[, t]
+  data$c_obs <- data[, obs]
+  data_evd$c <- data_evd[, true]
+  data_evd$c_obs <- data_evd[, obs]
+  if(!is.na(diff_by)) data$diffx <- data[, diff_by]
   jitter<-rnorm(n=length(data$x), mean=0, sd=0.0001)
   data$xj<-data$x+jitter
   data$c1<-ifelse(data$c_obs==1,1,0)
   data$c2<-ifelse(data$c_obs==2,1,0)
   data$c3<-ifelse(data$c_obs==2|data$c_obs==1,1,0)
-  if(diff==1){
+  if(!is.na(diff_by)){
     ax1<-misclassification(data_evd, c, c_obs, diffx)[1]
     ax2<-misclassification(data_evd, c, c_obs, diffx)[2]
     bx1<-misclassification(data_evd, c, c_obs, diffx)[3]
     bx2<-misclassification(data_evd, c, c_obs, diffx)[4]
   }
-  if(diff==0){
-    ax1<-misclassificationnd(data_evd)[1]
-    ax2<-misclassificationnd(data_evd)[1]
-    bx1<-misclassificationnd(data_evd)[2]
-    bx2<-misclassificationnd(data_evd)[2]
+  if(is.na(diff_by)){
+    ax1<-misclassificationnd(data_evd, c, c_obs)[1]
+    ax2<-misclassificationnd(data_evd, c, c_obs)[1]
+    bx1<-misclassificationnd(data_evd, c, c_obs)[2]
+    bx2<-misclassificationnd(data_evd, c, c_obs)[2]
   }
   s<-summary(survfit(Surv(data$xj, data$c3)~1))$surv
   alltimes<-summary(survfit(Surv(data$xj, data$c3)~1))[[2]]

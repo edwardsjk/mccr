@@ -27,4 +27,3 @@ misclassification(data, c, c_obs, diffx)
 \seealso{
 \code{\link{nchar}} which this function wraps
 }
-
