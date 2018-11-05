@@ -17,7 +17,7 @@ The package contains the following functions.
 
 ## Inputs
 
-All functions require inputting the main study data and specifying the time and event type variables. `cif_adj_nondiff` and `cif_adj` additioanlly require an external validation dataset that contains the gold standard event type indicator in addition to the possibly misclassified indicator. All functions require the user to specify the maximum follow-up time tau. Details on function calls can be found using `?cif_adj`, `?cif_adj_nondiff`, and `?cif_naive`. 
+All functions require inputting the main study data and specifying the time and event type variables. `cif_adj_nondiff` and `cif_adj` additionally require an external validation dataset that contains the gold standard event type indicator in addition to the possibly misclassified indicator. All functions require the user to specify the maximum follow-up time tau. Details on function calls can be found using `?cif_adj`, `?cif_adj_nondiff`, and `?cif_naive`. 
 
 ## Outputs
 
